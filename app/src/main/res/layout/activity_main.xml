@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <!-- App Title -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Career Hub"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="@color/black" />
+
+        <!-- Subtitle -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Build your future 🚀"
+            android:textSize="14sp"
+            android:layout_marginTop="4dp"
+            android:textColor="@color/black" />
+
+        <!-- Welcome -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Welcome back!"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginTop="16dp"
+            android:textColor="@color/black" />
+
+        <!-- Resume Builder -->
+        <Button
+            android:id="@+id/btnResume"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Resume Builder"
+            android:background="@drawable/bg_button_green"
+            android:textColor="@color/white"
+            android:layout_marginBottom="12dp"/>
+
+
+        <!-- CGPA Calculator -->
+        <Button
+            android:id="@+id/btnCgpa"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="CGPA Calculator"
+            android:background="@drawable/bg_button_green"
+            android:textColor="@color/white"
+            android:layout_marginBottom="12dp"/>
+        <!-- Skill Based Jobs -->
+        <Button
+            android:id="@+id/btnJobs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Skill-Based Jobs"
+            android:background="@drawable/bg_button_green"
+            android:textColor="@color/white"/>
+
+    </LinearLayout>
+
+</ScrollView>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Select Your Skills"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
+
+        <CheckBox
+            android:id="@+id/skillJava"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Java"/>
+
+        <CheckBox
+            android:id="@+id/skillKotlin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Kotlin"/>
+
+        <CheckBox
+            android:id="@+id/skillPython"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Python"/>
+
+        <CheckBox
+            android:id="@+id/skillHTML"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="HTML &amp; CSS"/>
+
+        <CheckBox
+            android:id="@+id/skillUI"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="UI / UX"/>
+
+        <Button
+            android:id="@+id/btnFindJobs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Find Jobs"
+            android:layout_marginTop="16dp"/>
+
+        <TextView
+            android:id="@+id/txtResult"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:layout_marginTop="20dp"/>
+    </LinearLayout>
+
+</ScrollView>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@color/white">
+
+    <TextView
+        android:text="Edit Resume"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="@color/primary_green"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:id="@+id/btnPersonalInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Personal Information"
+        android:backgroundTint="@color/white"
+        android:textColor="@color/black"
+        android:drawableEnd="@android:drawable/ic_media_play"
+        android:layout_marginTop="20dp"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Education"
+        android:backgroundTint="@color/white"
+        android:textColor="@color/black"
+        android:drawableEnd="@android:drawable/ic_media_play"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Preview Resume"
+        android:backgroundTint="@color/accent_green"
+        android:textColor="@color/white"
+        android:layout_marginTop="40dp"/>
+    <Button
+        android:id="@+id/btnOpenForm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Create Resume"/>
+
+
+</LinearLayout>

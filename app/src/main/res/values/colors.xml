@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Material required -->
+    <color name="purple_500">#6200EE</color>
+    <color name="purple_700">#3700B3</color>
+    <color name="purple_200">#BB86FC</color>
+
+    <color name="teal_200">#03DAC5</color>
+    <color name="teal_700">#018786</color>
+
+    <!-- App custom colors -->
+    <color name="primary_green">#2E7D32</color>
+    <color name="accent_green">#4CAF50</color>
+    <color name="accent">#C8E6C9</color>
+    <color name="gray">#E0E0E0</color>
+
+    <!-- Basic -->
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="green_primary">#4CAF50</color>
+
+
+
+</resources>
