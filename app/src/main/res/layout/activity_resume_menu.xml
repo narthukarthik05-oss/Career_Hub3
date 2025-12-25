@@ -33,17 +33,15 @@
         android:drawableEnd="@android:drawable/ic_media_play"/>
 
     <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Preview Resume"
-        android:backgroundTint="@color/accent_green"
-        android:textColor="@color/white"
-        android:layout_marginTop="40dp"/>
-    <Button
-        android:id="@+id/btnOpenForm"
+        android:id="@+id/btnCreateResume"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Create Resume"/>
 
+    <Button
+        android:id="@+id/btnPreviewResume"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Preview Resume"/>
 
 </LinearLayout>

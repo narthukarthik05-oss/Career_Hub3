@@ -11,16 +11,20 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        findViewById<Button>(R.id.btnResume).setOnClickListener {
-            startActivity(Intent(this, ResumeMenuActivity::class.java))
-        }
+        val btnCgpa = findViewById<Button>(R.id.btnCgpa)
+        val btnJobs = findViewById<Button>(R.id.btnJobs)
+        val btnResume = findViewById<Button>(R.id.btnResume)
 
-        findViewById<Button>(R.id.btnCgpa).setOnClickListener {
+        btnCgpa.setOnClickListener {
             startActivity(Intent(this, CgpaActivity::class.java))
         }
 
-        findViewById<Button>(R.id.btnJobs).setOnClickListener {
+        btnJobs.setOnClickListener {
             startActivity(Intent(this, JobsActivity::class.java))
+        }
+
+        btnResume.setOnClickListener {
+            startActivity(Intent(this, ResumeMenuActivity::class.java))
         }
     }
 }

@@ -50,15 +50,16 @@
 
 
         <!-- CGPA Calculator -->
+        <!-- Skill Based Jobs -->
         <Button
             android:id="@+id/btnCgpa"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="CGPA Calculator"
+            android:layout_marginBottom="12dp"
             android:background="@drawable/bg_button_green"
-            android:textColor="@color/white"
-            android:layout_marginBottom="12dp"/>
-        <!-- Skill Based Jobs -->
+            android:text="CGPA Calculator"
+            android:textColor="@color/white" />
+
         <Button
             android:id="@+id/btnJobs"
             android:layout_width="match_parent"
