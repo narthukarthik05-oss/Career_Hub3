@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <TextView
+        android:id="@+id/txtSubjectName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Subject"
+        android:textStyle="bold"
+        android:textSize="16sp" />
+
+    <EditText
+        android:id="@+id/edtGrade"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Grade Points (10,9,8...)"
+        android:inputType="number" />
+
+    <EditText
+        android:id="@+id/edtCredits"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Credits"
+        android:inputType="number" />
+
+</LinearLayout>
