@@ -1,10 +1,7 @@
 package com.example.careerhub
 
-import java.io.Serializable
-
 data class Semester(
-    val title: String,
+    var name: String = "",
     val subjects: MutableList<Subject> = mutableListOf(),
-    var sgpa: Double? = null,
-    var backlogs: Int = 0   // ✅ ADD THIS
-) : Serializable
+    var sgpa: Double = 0.0
+)

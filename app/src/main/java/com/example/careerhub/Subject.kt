@@ -1,9 +1,7 @@
 package com.example.careerhub
 
-import java.io.Serializable
-
 data class Subject(
-    val name: String,
-    val credits: Int,
-    val grade: String
-) : Serializable
+    var name: String = "",
+    var credits: Int = 0,
+    var grade: String = ""
+)

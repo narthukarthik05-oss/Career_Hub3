@@ -1,74 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="24dp">
+    android:padding="16dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvSemesters"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
 
     <TextView
+        android:id="@+id/tvFinalCGPA"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Enter your marks for 6 subjects"
-        android:textSize="18sp"
-        android:layout_gravity="center_horizontal"
-        android:paddingBottom="16dp" />
-
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/etSub1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Subject 1 marks"
-        android:inputType="numberDecimal" />
-
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/etSub2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Subject 2 marks"
-        android:inputType="numberDecimal" />
-
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/etSub3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Subject 3 marks"
-        android:inputType="numberDecimal" />
-
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/etSub4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Subject 4 marks"
-        android:inputType="numberDecimal" />
-
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/etSub5"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Subject 5 marks"
-        android:inputType="numberDecimal" />
-
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/etSub6"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Subject 6 marks"
-        android:inputType="numberDecimal" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnCalculate"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:text="Final CGPA: 0.00"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+    <Button
+        android:id="@+id/btnViewCgpa"
         android:text="Calculate CGPA"
-        android:layout_marginTop="16dp" />
-
-    <TextView
-        android:id="@+id/tvResult"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Your CGPA will appear here"
-        android:textSize="18sp"
-        android:paddingTop="16dp"
-        android:layout_gravity="center_horizontal" />
-
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 </LinearLayout>
+
+

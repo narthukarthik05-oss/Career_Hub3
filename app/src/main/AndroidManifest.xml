@@ -32,6 +32,7 @@
             android:exported="false" />
         <activity android:name=".ResumePreviewActivity"
             android:exported="false" />
+        <activity android:name=".SubjectEntryActivity" />
 
     </application>
 
