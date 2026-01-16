@@ -93,10 +93,10 @@ Clean UI with Material Design components
 
 🛠️ Tech Stack
 Technology	Usage
-Kotlin	Android app development
-Android Studio	Development IDE
-Firebase Authentication	Login & user management
-Firebase Firestore	Resume data storage
-PDF Generator (Android API)	Resume PDF creation
-Material UI	Modern user interface
-Git & GitHub	Version control
+Kotlin-Android app development
+Android Studio-Development IDE
+Firebase Authentication-Login & user management
+Firebase Firestore-Resume data storage
+PDF Generator (Android API)-Resume PDF creation
+Material UI	Modern-user interface
+Git & GitHub-Version control
