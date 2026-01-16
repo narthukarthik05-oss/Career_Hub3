@@ -11,10 +11,9 @@ class SemesterAdapter(
     private val onClick: (Semester) -> Unit
 ) : RecyclerView.Adapter<SemesterAdapter.ViewHolder>() {
 
-    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val tvSemesterTitle: TextView = view.findViewById(R.id.tvSemesterTitle)
-        val tvSgpa: TextView = view.findViewById(R.id.tvSgpa)
-        val tvBacklogs: TextView = view.findViewById(R.id.tvBacklogs)
+    inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        val tvSemester: TextView = view.findViewById(R.id.tvSemester)
+        val tvSGPA: TextView = view.findViewById(R.id.tvSGPA)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -25,11 +24,13 @@ class SemesterAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val semester = semesters[position]
-        holder.tvSemesterTitle.text = semester.name
-        holder.tvSgpa.text = "SGPA: %.2f".format(semester.sgpa)
-        val backlogs = semester.subjects.count { it.grade.uppercase() !in listOf("O","A+","A","B+","B") }
-        holder.tvBacklogs.text = "Backlogs: $backlogs"
-        holder.itemView.setOnClickListener { onClick(semester) }
+
+        holder.tvSemester.text = "Semester ${semester.name}"
+        holder.tvSGPA.text = "SGPA: %.2f".format(semester.sgpa)
+
+        holder.itemView.setOnClickListener {
+            onClick(semester)
+        }
     }
 
     override fun getItemCount(): Int = semesters.size

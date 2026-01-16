@@ -1,9 +1,9 @@
 package com.example.careerhub
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
-import com.google.firebase.firestore.FirebaseFirestore   // ✅ ADDED
 
 class JobsActivity : AppCompatActivity() {
 
@@ -11,61 +11,117 @@ class JobsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_jobs)
 
-        val java = findViewById<CheckBox>(R.id.skillJava)
-        val kotlin = findViewById<CheckBox>(R.id.skillKotlin)
-        val python = findViewById<CheckBox>(R.id.skillPython)
-        val html = findViewById<CheckBox>(R.id.skillHTML)
-        val ui = findViewById<CheckBox>(R.id.skillUI)
+        // SharedPreferences
+        val prefs = getSharedPreferences("settings", MODE_PRIVATE)
+        val softwareEnabled = prefs.getBoolean("software_jobs", true)
+        val governmentEnabled = prefs.getBoolean("government_jobs", true)
 
-        val findJobs = findViewById<Button>(R.id.btnFindJobs)
-        val result = findViewById<TextView>(R.id.txtResult)
+        // Views
+        val btnFindJobs = findViewById<Button>(R.id.btnFindJobs)
+        val btnNotificationSettings = findViewById<Button>(R.id.btnNotificationSettings)
+        val txtResult = findViewById<TextView>(R.id.txtResult)
 
-        val db = FirebaseFirestore.getInstance()   // ✅ ADDED
+        // Skill CheckBoxes (Skill Name → Checkbox)
+        val skillMap = mapOf(
+            "Java" to findViewById<CheckBox>(R.id.skillJava),
+            "Kotlin" to findViewById<CheckBox>(R.id.skillKotlin),
+            "Python" to findViewById<CheckBox>(R.id.skillPython),
+            "HTML & CSS" to findViewById<CheckBox>(R.id.skillHTML),
+            "JavaScript" to findViewById<CheckBox>(R.id.skillJS),
+            "SQL" to findViewById<CheckBox>(R.id.skillSQL),
+            "Firebase" to findViewById<CheckBox>(R.id.skillFirebase),
+            "UI / UX" to findViewById<CheckBox>(R.id.skillUI),
+            "Machine Learning" to findViewById<CheckBox>(R.id.skillML),
+            "Cloud" to findViewById<CheckBox>(R.id.skillCloud),
+            "Spring Boot" to findViewById<CheckBox>(R.id.skillSpring),
+            "ReactJS" to findViewById<CheckBox>(R.id.skillReact),
+            "Angular" to findViewById<CheckBox>(R.id.skillAngular),
+            "NodeJS" to findViewById<CheckBox>(R.id.skillNode),
+            "DevOps" to findViewById<CheckBox>(R.id.skillDevOps),
+            "Digital Marketing" to findViewById<CheckBox>(R.id.skillMarketing),
+            "Finance" to findViewById<CheckBox>(R.id.skillFinance),
+            "HR" to findViewById<CheckBox>(R.id.skillHR),
+            "Content Writing" to findViewById<CheckBox>(R.id.skillContent),
+            "Graphic Design" to findViewById<CheckBox>(R.id.skillDesign),
+            "Sales" to findViewById<CheckBox>(R.id.skillSales)
+        )
 
-        findJobs.setOnClickListener {
+        // Skill → Job Mapping
+        val skillToJobs = mapOf(
+            "Java" to listOf("Android Developer", "Backend Developer"),
+            "Kotlin" to listOf("Android Developer"),
+            "Python" to listOf("Python Developer", "Data Analyst", "ML Engineer"),
+            "HTML & CSS" to listOf("Frontend Developer", "Web Designer"),
+            "JavaScript" to listOf("Frontend Developer", "Full Stack Developer"),
+            "SQL" to listOf("Database Administrator", "Data Analyst"),
+            "Firebase" to listOf("Android Developer", "Backend Developer"),
+            "UI / UX" to listOf("UI Designer", "UX Researcher"),
+            "Machine Learning" to listOf("ML Engineer", "AI Engineer"),
+            "Cloud" to listOf("Cloud Engineer", "DevOps Engineer"),
+            "Spring Boot" to listOf("Java Backend Developer"),
+            "ReactJS" to listOf("React Developer", "Frontend Developer"),
+            "Angular" to listOf("Angular Developer"),
+            "NodeJS" to listOf("NodeJS Developer", "Backend Developer"),
+            "DevOps" to listOf("DevOps Engineer"),
+            "Digital Marketing" to listOf("Digital Marketing Executive"),
+            "Finance" to listOf("Accountant", "Financial Analyst"),
+            "HR" to listOf("HR Executive", "Recruiter"),
+            "Content Writing" to listOf("Content Writer"),
+            "Graphic Design" to listOf("Graphic Designer"),
+            "Sales" to listOf("Sales Executive", "Business Development Executive")
+        )
 
-            val jobs = mutableSetOf<String>()
-            val selectedSkills = mutableListOf<String>()   // ✅ ADDED
+        // FIND JOBS BUTTON
+        btnFindJobs.setOnClickListener {
 
-            // 🔹 ORIGINAL LOGIC (UNCHANGED)
-            if (java.isChecked || kotlin.isChecked) {
-                jobs.add("Android Developer")
+            if (!softwareEnabled && !governmentEnabled) {
+                Toast.makeText(
+                    this,
+                    "Job notifications are disabled in settings",
+                    Toast.LENGTH_LONG
+                ).show()
+                return@setOnClickListener
             }
 
-            if (html.isChecked) {
-                jobs.add("Web Developer")
+            // Selected skills
+            val selectedSkills = skillMap
+                .filter { it.value.isChecked }
+                .map { it.key }
+
+            if (selectedSkills.isEmpty()) {
+                Toast.makeText(
+                    this,
+                    "Please select at least one skill",
+                    Toast.LENGTH_SHORT
+                ).show()
+                return@setOnClickListener
             }
 
-            if (python.isChecked) {
-                jobs.add("Data Analyst")
+            // Find matching jobs
+            val matchedJobs = mutableSetOf<String>()
+            selectedSkills.forEach { skill ->
+                skillToJobs[skill]?.let { jobs ->
+                    matchedJobs.addAll(jobs)
+                }
             }
 
-            if (ui.isChecked) {
-                jobs.add("UI/UX Designer")
+            val jobType = buildString {
+                if (softwareEnabled) append("Software Jobs ")
+                if (governmentEnabled) append("Government Jobs")
             }
 
-            // ✅ FIREBASE SKILLS COLLECTION (ADDED)
-            if (java.isChecked) selectedSkills.add("Java")
-            if (kotlin.isChecked) selectedSkills.add("Kotlin")
-            if (python.isChecked) selectedSkills.add("Python")
-            if (html.isChecked) selectedSkills.add("HTML")
-            if (ui.isChecked) selectedSkills.add("UI/UX")
+            // Show result
+            txtResult.text = """
+                ✅ Selected Skills:
+                ${selectedSkills.joinToString(", ")}
 
-            if (jobs.isEmpty()) {
-                result.text = "Please select at least one skill"
-            } else {
-                result.text = "Suggested Jobs:\n\n" + jobs.joinToString("\n• ", "• ")
+                💼 Matching Jobs:
+                ${matchedJobs.joinToString("\n• ", prefix = "• ")}
 
-                // ✅ SAVE USER SKILLS + JOBS TO FIREBASE
-                val jobData = hashMapOf(
-                    "skills" to selectedSkills,
-                    "suggestedJobs" to jobs.toList(),
-                    "timestamp" to System.currentTimeMillis()
-                )
+                🔍 Category:
+                $jobType
+            """.trimIndent()
 
-                db.collection("job_searches")
-                    .add(jobData)
-            }
         }
     }
 }

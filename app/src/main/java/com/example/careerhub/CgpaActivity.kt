@@ -2,6 +2,7 @@ package com.example.careerhub
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -14,14 +15,16 @@ class CgpaActivity : AppCompatActivity() {
     private lateinit var adapter: SemesterAdapter
     private lateinit var rvSemesters: RecyclerView
     private lateinit var tvFinalCGPA: TextView
+    private lateinit var btnViewCgpa: Button
     private val db = FirebaseFirestore.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cgpa)
 
-        tvFinalCGPA = findViewById(R.id.tvFinalCGPA)
         rvSemesters = findViewById(R.id.rvSemesters)
+        tvFinalCGPA = findViewById(R.id.tvFinalCGPA)
+        btnViewCgpa = findViewById(R.id.btnViewCgpa)
 
         adapter = SemesterAdapter(semesters) { semester ->
             val intent = Intent(this, SubjectEntryActivity::class.java)
@@ -33,30 +36,41 @@ class CgpaActivity : AppCompatActivity() {
         rvSemesters.adapter = adapter
 
         loadSemesters()
+
+        btnViewCgpa.setOnClickListener {
+            val cgpa = calculateFinalCGPA()
+            val intent = Intent(this, CgpaResultActivity::class.java)
+            intent.putExtra("CGPA", cgpa)
+            startActivity(intent)
+        }
     }
 
     private fun loadSemesters() {
         val names = listOf("1-1","1-2","2-1","2-2","3-1","3-2","4-1","4-2")
         semesters.clear()
+
         names.forEach { name ->
             db.collection("semesters").document(name).get()
                 .addOnSuccessListener { doc ->
-                    val semester = doc.toObject(Semester::class.java) ?: Semester(name)
-                    semesters.add(semester)
+                    val sgpa = doc.getDouble("sgpa") ?: 0.0
+                    semesters.add(Semester(name, sgpa))
                     adapter.notifyDataSetChanged()
-                    calculateFinalCGPA()
+                    updateFinalCGPAUI()
                 }
                 .addOnFailureListener {
-                    semesters.add(Semester(name))
+                    semesters.add(Semester(name, 0.0))
                     adapter.notifyDataSetChanged()
-                    calculateFinalCGPA()
+                    updateFinalCGPAUI()
                 }
         }
     }
 
-    private fun calculateFinalCGPA() {
-        val valid = semesters.mapNotNull { it.sgpa.takeIf { it > 0.0 } }
-        val avg = if (valid.isNotEmpty()) valid.average() else 0.0
-        tvFinalCGPA.text = "Final CGPA: %.2f".format(avg)
+    private fun calculateFinalCGPA(): Double {
+        val valid = semesters.map { it.sgpa }.filter { it > 0 }
+        return if (valid.isNotEmpty()) valid.average() else 0.0
+    }
+
+    private fun updateFinalCGPAUI() {
+        tvFinalCGPA.text = "Final CGPA: %.2f".format(calculateFinalCGPA())
     }
 }

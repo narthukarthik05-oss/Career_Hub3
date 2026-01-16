@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:fillViewport="true">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -10,48 +11,73 @@
         android:padding="20dp">
 
         <TextView
+            android:id="@+id/tvTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Select Your Skills"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_gravity="center_horizontal"
+            android:paddingBottom="16dp"/>
+
+        <!-- IT Skills -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="💻 IT Skills"
             android:textSize="20sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            android:paddingBottom="8dp"/>
 
-        <CheckBox
-            android:id="@+id/skillJava"
+        <CheckBox android:id="@+id/skillJava" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Java"/>
+        <CheckBox android:id="@+id/skillKotlin" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Kotlin"/>
+        <CheckBox android:id="@+id/skillPython" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Python"/>
+        <CheckBox android:id="@+id/skillHTML" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="HTML &amp; CSS"/>
+        <CheckBox android:id="@+id/skillJS" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="JavaScript"/>
+        <CheckBox android:id="@+id/skillSQL" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="SQL / Databases"/>
+        <CheckBox android:id="@+id/skillFirebase" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Firebase"/>
+        <CheckBox android:id="@+id/skillUI" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="UI / UX"/>
+        <CheckBox android:id="@+id/skillML" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Machine Learning"/>
+        <CheckBox android:id="@+id/skillCloud" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cloud (AWS/GCP)"/>
+        <CheckBox android:id="@+id/skillSpring" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Spring Boot"/>
+        <CheckBox android:id="@+id/skillReact" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="ReactJS"/>
+        <CheckBox android:id="@+id/skillAngular" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Angular"/>
+        <CheckBox android:id="@+id/skillNode" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="NodeJS"/>
+        <CheckBox android:id="@+id/skillDevOps" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="DevOps"/>
+
+        <!-- Non-IT Skills -->
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Java"/>
+            android:text="📋 Non-IT Skills"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:paddingTop="16dp"
+            android:paddingBottom="8dp"/>
 
-        <CheckBox
-            android:id="@+id/skillKotlin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Kotlin"/>
+        <CheckBox android:id="@+id/skillMarketing" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Digital Marketing"/>
+        <CheckBox android:id="@+id/skillFinance" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Finance / Accounting"/>
+        <CheckBox android:id="@+id/skillHR" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="HR / Recruitment"/>
+        <CheckBox android:id="@+id/skillContent" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Content Writing"/>
+        <CheckBox android:id="@+id/skillDesign" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Graphic Design"/>
+        <CheckBox android:id="@+id/skillSales" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Sales &amp; Business Development"/>
 
-        <CheckBox
-            android:id="@+id/skillPython"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Python"/>
-
-        <CheckBox
-            android:id="@+id/skillHTML"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="HTML &amp; CSS"/>
-
-        <CheckBox
-            android:id="@+id/skillUI"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="UI / UX"/>
-
+        <!-- Button -->
         <Button
             android:id="@+id/btnFindJobs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Find Jobs"
-            android:layout_marginTop="16dp"/>
+            android:layout_marginTop="16dp"
+            android:backgroundTint="@color/purple_500"
+            android:textColor="@android:color/white"/>
+
+        <!-- Result -->
+        <Button
+            android:id="@+id/btnNotificationSettings"
+            android:text="Notification Settings"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
         <TextView
             android:id="@+id/txtResult"
@@ -60,5 +86,4 @@
             android:textSize="16sp"
             android:layout_marginTop="20dp"/>
     </LinearLayout>
-
 </ScrollView>

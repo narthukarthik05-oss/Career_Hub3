@@ -67,6 +67,15 @@
             android:text="Skill-Based Jobs"
             android:background="@drawable/bg_button_green"
             android:textColor="@color/white"/>
+        <Button
+            android:id="@+id/btnNotification"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Job Notifications 🔔"
+            android:background="@drawable/bg_button_green"
+            android:textColor="@color/white"
+            android:layout_marginTop="12dp"/>
+
 
     </LinearLayout>
 
